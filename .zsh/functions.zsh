@@ -9,4 +9,4 @@ function colormap() {
 # Function to check if a program exists
 if_exists() {
     command -v $1 >/dev/null 2>&1
-}
+} 

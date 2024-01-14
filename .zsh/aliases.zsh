@@ -2,6 +2,7 @@
 # ---
 #
 # Named Directories:
+$IS_WSL && WIN_PATH="C:/Users/arthu"
 $IS_WSL && hash -d home=/mnt/c/Users/arthu
 hash -d dev=~/software-development
 # Aliases
@@ -38,3 +39,4 @@ if_exists lsd && alias lt='ls --tree'
 ! $IS_MACOS && if_exists xclip && alias pbpaste='xclip -selection clipboard -o'
 # Use vscode insiders
 alias code="code-insiders"
+alias vim="nvim"

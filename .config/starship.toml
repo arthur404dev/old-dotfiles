@@ -5,7 +5,35 @@ command_timeout = 1000                 # Change command timeout from 500 to 1000
 format = """$username $env_var $all""" # Add custom formatting before other stuff
 
 # Add color palette
-palette = "thanos"
+palette = "catppuccin_mocha"
+
+[palettes.catppuccin_mocha]
+    rosewater = "#f5e0dc"
+    flamingo = "#f2cdcd"
+    pink = "#f5c2e7"
+    mauve = "#cba6f7"
+    red = "#f38ba8"
+    maroon = "#eba0ac"
+    peach = "#fab387"
+    yellow = "#f9e2af"
+    green = "#a6e3a1"
+    teal = "#94e2d5"
+    sky = "#89dceb"
+    sapphire = "#74c7ec"
+    blue = "#89b4fa"
+    lavender = "#b4befe"
+    text = "#cdd6f4"
+    subtext1 = "#bac2de"
+    subtext0 = "#a6adc8"
+    overlay2 = "#9399b2"
+    overlay1 = "#7f849c"
+    overlay0 = "#6c7086"
+    surface2 = "#585b70"
+    surface1 = "#45475a"
+    surface0 = "#313244"
+    base = "#1e1e2e"
+    mantle = "#181825"
+    crust = "#11111b"
 
 [palettes.thanos]
     space = "#00A1E4"
@@ -25,27 +53,27 @@ palette = "thanos"
 # Shows current username
 [username]
     format = '[  $user]($style)'
-    style_user = "power bold"
-    style_root = "soul bold"
+    style_user = "mauve bold"
+    style_root = "peach bold"
     disabled = false
     show_always = true
 
 # ---
 # Shows an icon depending on what device it is running on
 [env_var.STARSHIP_DEVICE]
-    format = 'on [$env_value](bold vision)'
+    format = 'on [$env_value](bold pink)'
     variable = "STARSHIP_DEVICE"
     disabled = false
 
 # Shows the hostname
 [hostname]
     ssh_only = false
-    format = "[$hostname](bold vision) "
+    format = "[$hostname](bold pink) "
     disabled = false
 
 # Shows an icon depending on what distro it is running on
 [env_var.STARSHIP_DISTRO]
-    format = '[ 󱕆 $env_value](bold vision)'
+    format = '[ 󱕆 $env_value](bold pink)'
     variable = "STARSHIP_DISTRO"
     disabled = false
 
@@ -84,11 +112,11 @@ palette = "thanos"
 
 # Shows kubernetes context and namespace
 [kubernetes]
-    format = 'via [󰠳 $context\($namespace\)](bold vision) '
+    format = 'via [󰠳 $context\($namespace\)](bold pink) '
     disabled = false
 
 # Shows localip for ssh-connections
 [localip]
     ssh_only = true
-    format = '[\( $localipv4\)](bold space) '
+    format = '[\( $localipv4\)](bold sapphire) '
     disabled = false
