@@ -34,9 +34,6 @@ alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
 if_exists lsd && alias lt='ls --tree'
-# Enable pbcopy and paste
-! $IS_MACOS && if_exists xclip && alias pbcopy='xclip -selection clipboard'
-! $IS_MACOS && if_exists xclip && alias pbpaste='xclip -selection clipboard -o'
 # Use vscode insiders
 alias code="code-insiders"
 alias vim="nvim"

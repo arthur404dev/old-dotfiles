@@ -20,4 +20,10 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 # Exporters
 [[ -f ~/.zsh/exporters.zsh ]] && source ~/.zsh/exporters.zsh
 
+# Start tmux if not already running
+if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
+  # Create session 'main' or attach to 'main' if already exists.
+  tmux new-session -A -s main
+fi
+
 # --->
