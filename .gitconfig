@@ -27,8 +27,6 @@
     exec = "!exec "
     root = rev-parse --show-toplevel
 
-[url "git@github.com:"]
-	insteadOf = https://github.com/
 
 [submodule]
     summary = short
@@ -57,3 +55,6 @@
 [color "status"]
     added = yellow
     changed = green
+
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
