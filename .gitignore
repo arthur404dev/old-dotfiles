@@ -1,1 +1,4 @@
-config/tmux/plugins
+.config/tmux/plugins
+.local/share
+.local/state
+
