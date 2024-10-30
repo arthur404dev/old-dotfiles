@@ -9,10 +9,22 @@
     rebase = true
 
 [push]
+    default = current
     autoSetupRemote = true
 
 [core]
-    editor = code
+  editor = code
+  pager = delta
+
+[interactive]
+  diffFilter = delta --color-only
+
+[include]
+    path = ~/.config/delta/themes/catppuccin.gitconfig
+
+[delta]
+  line-numbers = true
+  features = catppuccin-mocha
 
 [init]
     defaultBranch = main
@@ -26,6 +38,7 @@
     lg = !"git lg1"
     exec = "!exec "
     root = rev-parse --show-toplevel
+    undo = reset --soft HEAD^
 
 
 [submodule]
