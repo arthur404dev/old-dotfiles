@@ -1,0 +1,8 @@
+# style name or JSON path (default "auto")
+style: "~/.config/glow/catppuccin_mocha.json"
+# mouse support (TUI-mode only)
+mouse: false
+# use pager to display markdown
+pager: true
+# word-wrap at width
+width: 80

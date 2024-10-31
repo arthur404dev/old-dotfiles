@@ -15,6 +15,7 @@ if_exists code && alias zshconfig="code $HOME/.zshrc"
 alias delete="rm -rf"
 alias myip="curl http://ipecho.net/plain; echo"
 $IS_WSL && alias explorer="/mnt/c/Windows/explorer.exe"
+# $IS_WSL && alias ollama="ollama.exe"
 # Git Aliases
 alias gi="git init"
 alias gc="git commit -m"
@@ -34,7 +35,7 @@ if_exists lsd && alias ls='lsd'
 alias l='ls -l'
 alias la='ls -a'
 alias lla='ls -la'
-if_exists lsd && alias lt='ls --tree'
+if_exists lsd && alias lt='ls --tree --ignore-glob="**/node_modules/**"'
 # Use vscode insiders
 alias code="code-insiders"
 alias vim="nvim"

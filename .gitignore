@@ -2,3 +2,5 @@
 .local/share
 .local/state
 
+.aider*
+.env
