@@ -1,6 +1,5 @@
 .config/tmux/plugins
-.local/share
-.local/state
+.local
 
 .aider*
 .env
