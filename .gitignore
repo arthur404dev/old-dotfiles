@@ -1,5 +1,7 @@
 .config/tmux/plugins
+.config/io.datasette.llm
 .local
+
 
 .aider*
 .env
