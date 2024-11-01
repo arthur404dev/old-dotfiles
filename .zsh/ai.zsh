@@ -84,9 +84,3 @@ ai() {
         ;;
     esac
 }
-
-funczinha() {
-    vared -p "Type your username: " username
-
-    echo "Hello $username"
-}
