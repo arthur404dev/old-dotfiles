@@ -18,6 +18,7 @@ case $_distro in
 *fedora*) ICON="" ;;
 *coreos*) ICON="" ;;
 *gentoo*) ICON="" ;;
+*garuda*) ICON="" ;;
 *mageia*) ICON="" ;;
 *centos*) ICON="" ;;
 *opensuse* | *tumbleweed*) ICON="" ;;
