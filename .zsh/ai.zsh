@@ -7,22 +7,7 @@ ai_chat() {
         local models=$(llm models)
         local selected_model_name
 
-        # Check if fzf is installed
-        if if_exists fzf; then
-            # If fzf is installed, use it for model selection
-            local selected_model=$(echo "$models" | fzf --height=40% --layout=reverse --border --prompt="Select a model: ")
-        else
-            # If fzf is not installed, fall back to the basic selection method
-            local i=1
-            echo "$models" | while read -r line; do
-                echo "($i) $line"
-                i=$((i + 1))
-            done
-
-            local selected_model
-            vared -p "Select a model number: " selected_model
-            selected_model=$(echo "$models" | sed -n "${selected_model}p")
-        fi
+        select_item "Select a model: " "$models" "model"
 
         # Extract the model name from the selected line
         selected_model_name=$(echo "$selected_model" | awk -F': ' '{print $2}' | awk '{print $1}')
@@ -36,7 +21,68 @@ ai_chat() {
 }
 
 ai_explain() {
+    local filename=""
+    if [[ -z "$2" ]]; then
+        # If no file is specified, use select_item to select one from the current directory
+        local files=$(ls -1)
+        filename=$(select_item "Select the file to Explain: " "$files" "file")
+    else
+        # If a file is specified, use it
+        filename="$2"
+    fi
 
+    if [[ -z "$filename" ]]; then
+        echo "Usage: ai explain <file_name>"
+        echo "No file specified."
+        return 1
+    fi
+
+    # Check if the file exists
+    if [[ ! -f "$filename" ]]; then
+        echo "Error: File '$filename' does not exist."
+        return 1
+    fi
+
+    local tempfile=$(mktemp)
+    local spinner=("-" "\\" "|" "/")
+    local i=0
+    local start_time=$(date +%s)
+
+    # Run the command in the background
+    (llm 'Explain this file' --no-stream <"$filename" >"$tempfile") &
+
+    # Display the spinner while the command is running
+    tput cuu 1
+    tput el
+    local pid="$!"
+    while kill -0 "$pid" 2>/dev/null; do
+        i=$(((i + 1) % 4))
+        k=$(((i + 1) % 2 ? 4 : 2))
+        printf "\r -> Thinking...[$(tput setaf $k)${spinner:$i:1}$(tput sgr0)] \r"
+        sleep 0.1
+    done
+
+    # Wait for the background process to complete
+    wait $pid
+
+    # Check if the command was successful
+    if [[ $? -ne 0 ]]; then
+        echo "Error: Failed to process file '$filename'"
+        rm "$tempfile"
+        return 1
+    fi
+
+    # Calculate the elapsed time
+    local end_time=$(date +%s)
+    local elapsed_time=$((end_time - start_time))
+
+    tput cuu 2
+    tput el
+
+    # Print a newline after the command completes
+    printf "\rFile %s explained in %s seconds.\n" "$filename" "$elapsed_time"
+    cat "$tempfile" | glow
+    rm "$tempfile"
 }
 
 ai_prompt() {
@@ -53,18 +99,40 @@ ai_code() {
 
 ai() {
     local subcommand=$1
-
     if [[ "$subcommand" == "--help" ]] || [[ "$subcommand" == "help" ]] || [[ -z "$subcommand" ]]; then
         echo "Usage: ai [OPTIONS] COMMAND [ARGS]..."
         echo ""
         echo "  Manage your Artificial Intelligence instance"
         echo ""
         echo "Options:"
-        echo "  --help  Show this message and exit"
+        echo "  --help    Show this message and exit"
         echo ""
         echo "Commands:"
-        echo "  chat      Start a chat with the AI choosing a model or passing a model name"
-        echo "  prompt    Start a prompt with the AI choosing a model or passing a model name"
+        echo "  chat     Start an interactive chat session with AI"
+        echo "           Usage: ai chat [MODEL|default]"
+        echo "           Options:"
+        echo "             MODEL         Specify the model to use"
+        echo "             -d,--default  Use the default model"
+        echo ""
+        echo "  explain  Analyze and explain the contents of a file"
+        echo "           Usage: ai explain [FILE]"
+        echo "           If no file is specified, opens an interactive file selector"
+        echo ""
+        echo "  prompt   Send a one-off prompt to the AI [Not implemented]"
+        echo "           Usage: ai prompt [MODEL] \"your prompt\""
+        echo ""
+        echo "  cmd      Execute and explain shell commands [Not implemented]"
+        echo "           Usage: ai cmd \"command description\""
+        echo ""
+        echo "  code     Generate or explain code snippets [Not implemented]"
+        echo "           Usage: ai code \"code description\""
+        echo ""
+        echo "Examples:"
+        echo "  ai chat                   # Start chat with model selection"
+        echo "  ai chat default           # Start chat with default model"
+        echo "  ai chat gpt-4             # Start chat with specific model"
+        echo "  ai explain script.sh      # Explain contents of script.sh"
+        echo "  ai explain                # Select and explain a file interactively"
         return 0
     fi
 
@@ -78,9 +146,26 @@ ai() {
     cmd)
         ai_cmd "$@"
         ;;
+    explain)
+        ai_explain "$@"
+        ;;
+    code)
+        ai_code "$@"
+        ;;
     *)
-        echo "Invalid command: $subcommand"
-        echo "Run 'ai help' for usage information."
+        echo "Error: Invalid command '$subcommand'"
+        echo "Run 'ai --help' for usage information."
+        return 1
         ;;
     esac
+}
+
+spinner() {
+    spinner=("-" "\\" "|" "/")
+    local i=0
+    while true; do
+        i=$(((i + 1) % 4))
+        printf "\r${spinner:$i:1}"
+        sleep 0.1
+    done
 }

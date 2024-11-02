@@ -3,6 +3,15 @@ if_exists() {
   command -v $1 >/dev/null 2>&1
 }
 
+silent_background() {
+  { "$@" 2>&3 & } 3>&2 2>/dev/null
+  disown &>/dev/null
+}
+
+clear_entire_output() {
+  print -z '\e[2J\e[H'
+}
+
 # Searches recursively in a folder / file and pipes into fzf
 search() {
   grep -r $1 $2 | fzf --height=40% --border --tmux=center --prompt="Search: "
@@ -54,24 +63,49 @@ fix() {
   esac
 }
 
-fix_history(){
-    # Check if the history file exists
-    if [[ -f ~/.zsh_history ]]; then
-      backup_name=".zsh_history_$(date +%Y%m%d%H%M%S)_bad"
-      echo "(1/3) Creating backup $backup_name"
+fix_history() {
+  # Check if the history file exists
+  if [[ -f ~/.zsh_history ]]; then
+    backup_name=".zsh_history_$(date +%Y%m%d%H%M%S)_bad"
+    echo "(1/3) Creating backup $backup_name"
 
-      # Create a timestamped backup of the history file
-      mv ~/.zsh_history ~/$backup_name
-      print "(2/3) Attempt to repair file"
-      # Attempt to repair the history file
-      strings ~/$backup_name > ~/.zsh_history
+    # Create a timestamped backup of the history file
+    mv ~/.zsh_history ~/$backup_name
+    print "(2/3) Attempt to repair file"
+    # Attempt to repair the history file
+    strings ~/$backup_name >~/.zsh_history
 
-      print "(3/3) Reload History"
-      # Reload the history
-      fc -R ~/.zsh_history
-      rm ~/$backup_name
+    print "(3/3) Reload History"
+    # Reload the history
+    fc -R ~/.zsh_history
+    rm ~/$backup_name
 
-    else
-      print "History file not found."
-    fi
+  else
+    print "History file not found."
+  fi
+}
+
+select_item() {
+  local prompt="$1"
+  local items="$2"
+  local fallback_label="$3" # New parameter for fallback label
+  local selected_item=""
+
+  # Checks if fzf is installed and uses it if available, otherwise uses a basic selection
+  if if_exists fzf; then
+    selected_item=$(echo "$items" | fzf --height=40% --layout=reverse --border --prompt="$prompt")
+  else
+    local i=1
+    echo "$items" | while read -r item; do
+      echo "($i) $item"
+      i=$((i + 1))
+    done
+
+    local selected_index
+    # Use the provided fallback label or default to "item"
+    vared -p "Select a ${fallback_label:-item} number: " selected_index
+    selected_item=$(echo "$items" | sed -n "${selected_index}p")
+  fi
+
+  echo "$selected_item"
 }
