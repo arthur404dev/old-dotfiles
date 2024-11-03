@@ -1,7 +1,9 @@
+.config/nushell/history.txt
 .config/tmux/plugins
 .config/io.datasette.llm
 .config/neofetch/images/normal-center-400*
 .local
+
 
 
 .aider*
