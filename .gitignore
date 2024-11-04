@@ -3,6 +3,7 @@
 .config/io.datasette.llm
 .config/neofetch/images/normal-center-400*
 .config/lazygit/state.yml
+.config/nvim/lazy-lock.json
 .local
 
 
