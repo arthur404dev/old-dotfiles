@@ -1,3 +1,8 @@
+# Downloads starship if not installed
+if [ ! -f /usr/local/bin/starship ]; then
+    curl -sS https://starship.rs/install.sh | sh -s -- -y
+fi
+
 _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 
 # Checks the device based if a power-suppy is present or not
@@ -37,3 +42,10 @@ esac
 
 export STARSHIP_DISTRO="$ICON"
 export STARSHIP_DEVICE="$DEVICE"
+
+# Load Starship
+# Fixes: https://github.com/starship/starship/issues/3418
+type starship_zle-keymap-select >/dev/null ||
+    {
+        eval "$(/usr/local/bin/starship init zsh)"
+    }
