@@ -1,0 +1,59 @@
+
+[colors.bright]
+black = "#404040"
+blue = "#bea6ff"
+cyan = "#bea6ff"
+green = "#94f4ec"
+magenta = "#3ac3ff"
+red = "#ff6b9d"
+white = "#f0f0e9"
+yellow = "#FFE066"
+
+[colors.dim]
+black = "#111111"
+blue = "#7b51cc"
+cyan = "#7b51cc"
+green = "#3dd2c3"
+magenta = "#0081b5"
+red = "#b71d59"
+white = "#a3a48f"
+yellow = "#c18d1d"
+
+[colors.normal]
+black = "#1A1A1A"
+blue = "#9d65ff"
+cyan = "#9d65ff"
+green = "#58ebd7"
+magenta = "#00A1E4"
+red = "#ff206e"
+white = "#C4C5B5"
+yellow = "#FABC2A"
+
+[colors.primary]
+background = "#181B28"
+bright_foreground = "#ffffff"
+dim_foreground = "#C4C5B5"
+foreground = "#ffffff"
+
+[cursor.style]
+blinking = "On"
+shape = "Block"
+
+[font]
+size = 16.0
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+
+[window]
+decorations = "buttonless"
+dynamic_padding = false
+opacity = 0.95
+startup_mode = "Maximized"
+
+[window.padding]
+x = 18
+y = 16
+
+[general]
+live_config_reload = true
