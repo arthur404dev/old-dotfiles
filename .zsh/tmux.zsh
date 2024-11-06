@@ -55,6 +55,12 @@ randomize_session_names() {
     printf "%s\n" "${session_names[@]}" | sort -R
 }
 
+# Checks if tmux is installed, if not, install it
+if [ ! -f $BREW_PREFIX/bin/tmux ]; then
+    echo "Installing Tmux..."
+    $BREW_PREFIX/bin/brew install tmux
+fi
+
 # Start tmux if not already running
 if [ -n "$PS1" ] && [ -z "$TMUX" ]; then
     for name in $(randomize_session_names); do
