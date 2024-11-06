@@ -3,7 +3,23 @@ if [ ! -f /usr/local/bin/starship ]; then
     curl -sS https://starship.rs/install.sh | sh -s -- -y
 fi
 
-_distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+# find out which distribution we are running on
+LFILE="/etc/*-release"
+MFILE="/System/Library/CoreServices/SystemVersion.plist"
+if [[ -f $LFILE ]]; then
+    _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
+elif [[ -f $MFILE ]]; then
+    _distro="macos"
+
+    # on mac os use the systemprofiler to determine the current model
+    _device=$(system_profiler SPHardwareDataType | awk '/Model Name/ {print $3,$4,$5,$6,$7}')
+
+    case $_device in
+    *MacBook*) DEVICE="" ;;
+    *mini*) DEVICE="󰇄" ;;
+    *) DEVICE="" ;;
+    esac
+fi
 
 # Checks the device based if a power-suppy is present or not
 if [ -d "/proc/acpi/battery/BAT*" ]; then
