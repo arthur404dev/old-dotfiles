@@ -50,6 +50,6 @@ ol() {
 }
 
 # Check if ollama is already running
-if ! pgrep -f "ollama serve" >/dev/null; then
+if [ -f /usr/local/bin/ollama ] && ! pgrep -f "ollama serve" >/dev/null; then
   ol start
 fi
