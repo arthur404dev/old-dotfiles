@@ -4,9 +4,9 @@ if [ ! -f /usr/local/bin/starship ]; then
 fi
 
 # find out which distribution we are running on
-LFILE="/etc/*-release"
+LFILE="*-release"
 MFILE="/System/Library/CoreServices/SystemVersion.plist"
-if [[ -f $LFILE ]]; then
+if find /etc/ -maxdepth 1 -name $LFILE 2>/dev/null | grep -q .; then
     _distro=$(awk '/^ID=/' /etc/*-release | awk -F'=' '{ print tolower($2) }')
 elif [[ -f $MFILE ]]; then
     _distro="macos"
