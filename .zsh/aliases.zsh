@@ -9,6 +9,7 @@ hash -d dev=~/software-development
 # Aliases
 $IS_WSL && alias home="cd ~home"
 alias dev="cd ~dev"
+alias dot="cd ~/dotfiles"
 alias reload="source ~/.zshrc"
 alias install="sudo apt-get install"
 if_exists code && alias zshconfig="code $HOME/.zshrc"

@@ -8,7 +8,7 @@
 [[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 [[ -f ~/.zsh/config.zsh ]] && source ~/.zsh/config.zsh
-[[ -f ~/.zsh/path ]] && source ~/.zsh/path.zsh
+[[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh
 [[ -f ~/.zsh/completions.zsh ]] && source ~/.zsh/completions.zsh
 
 # Load Plugins and Themes
