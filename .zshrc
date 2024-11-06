@@ -23,11 +23,14 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 [[ -f ~/.zsh/pyenv.zsh ]] && source ~/.zsh/pyenv.zsh
 [[ -f ~/.zsh/libs.zsh ]] && source ~/.zsh/libs.zsh
 
-# Load Programs
+# Load Artificial Intelligence
 [[ -f ~/.zsh/ollama.zsh ]] && source ~/.zsh/ollama.zsh
 [[ -f ~/.zsh/ai.zsh ]] && source ~/.zsh/ai.zsh
-[[ -f ~/.zsh/fzf.zsh ]] && source ~/.zsh/fzf.zsh
-[[ -f ~/.zsh/zoxide.zsh ]] && source ~/.zsh/zoxide.zsh
+
+# Load All Programs from /programs
+for file in ~/.zsh/programs/*; do
+    source $file
+done
 
 # Exporters
 [[ -f ~/.zsh/exporters.zsh ]] && source ~/.zsh/exporters.zsh
