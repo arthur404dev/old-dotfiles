@@ -1,3 +1,6 @@
+# Load Package Manager (zinit)
+[[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh
+
 # Load Helpers
 [[ -f ~/.zsh/helpers.zsh ]] && source ~/.zsh/helpers.zsh
 
@@ -12,7 +15,6 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 [[ -f ~/.zsh/loaders.zsh ]] && source ~/.zsh/loaders.zsh
 
 # Load Oh-My-Zsh and then the aliases
-[[ -f ~/.zsh/oh-my.zsh ]] && source ~/.zsh/oh-my.zsh
 [[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
 [[ -f ~/.zsh/autocomplete.zsh ]] && source ~/.zsh/autocomplete.zsh
 
@@ -31,4 +33,3 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 [[ -f ~/.zsh/tmux.zsh ]] && source ~/.zsh/tmux.zsh
 
 # --->
-
