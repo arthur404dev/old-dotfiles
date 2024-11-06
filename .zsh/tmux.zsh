@@ -51,8 +51,8 @@ randomize_session_names() {
         "zeus"
     )
 
-    # Print the session names, pipe them to `shuf` to randomize, then print the randomized list
-    printf "%s\n" "${session_names[@]}" | shuf
+    # Print the session names, pipe them to `sort -R` to randomize, then print the randomized list
+    printf "%s\n" "${session_names[@]}" | sort -R
 }
 
 # Start tmux if not already running
