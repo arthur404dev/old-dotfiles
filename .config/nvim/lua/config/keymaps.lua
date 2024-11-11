@@ -6,3 +6,4 @@
 vim.keymap.set("n", "<leader>w\\", "<C-W>v", { desc = "Split window right", remap = true })
 -- vim.keymap.del("n", "<leader>|")
 vim.keymap.set("n", "<leader>\\", "<C-W>v", { desc = "Split window right", remap = true })
+vim.keymap.set("n", "<leader>a", "gg0VG", { desc = "Select all", remap = true })
