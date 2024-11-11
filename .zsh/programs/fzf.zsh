@@ -1,8 +1,5 @@
 # If fzf is not installed, install it
-if [ ! -f $BREW_PREFIX/bin/fzf ]; then
-    echo "Installing fzf..."
-    $BREW_PREFIX/bin/brew install fzf
-fi
+ensure_package fzf -s
 
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \

@@ -14,5 +14,6 @@ $IS_WSL && alias explorer="/mnt/c/Windows/explorer.exe"
 # Docker Aliases
 if_exists docker && alias drai="docker rmi $(docker images -a -q)"
 if_exists docker && alias drac="docker rm $(docker ps -a -q)"
-# Use vscode insiders
-alias code="code-insiders"
+alias c="code"
+alias ci="code-insiders"
+alias cu="cursor"

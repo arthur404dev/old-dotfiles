@@ -7,7 +7,7 @@ export FZF_DEFAULT_OPTS=" \
 --multi \
 --layout=reverse \
 --border \
---preview='lsd --tree {} --depth 2 --ignore-glob node_modules' \
+--preview='lta2 --ignore-glob node_modules' \
 --margin=1 \
 --no-scrollbar \
 --ansi \

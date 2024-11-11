@@ -1,7 +1,9 @@
 # Function to start ollama serve in the background
 start_ollama() {
-  nohup ollama serve >/dev/null 2>&1 &
-  disown
+  {
+    nohup ollama serve >/dev/null 2>&1 &
+    disown
+  } &>/dev/null
 }
 
 # Function to view the output of the running ollama serve process

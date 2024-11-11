@@ -1,7 +1,5 @@
-if [ ! -f $BREW_PREFIX/bin/nvim ]; then
-    echo "Installing neovim..."
-    $BREW_PREFIX/bin/brew install neovim
-fi
+ensure_package neovim -b nvim -s
 
 # Alias to open neovim
 alias vim="nvim"
+export EDITOR=nvim
