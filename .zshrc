@@ -1,3 +1,4 @@
+export XDG_CONFIG_HOME="$HOME/.config"
 ENSURE_PACKAGES=false
 # Load Package Manager (zinit)
 [[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh
