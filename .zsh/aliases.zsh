@@ -17,3 +17,7 @@ if_exists docker && alias drac="docker rm $(docker ps -a -q)"
 alias c="code"
 alias ci="code-insiders"
 alias cu="cursor"
+# Copy
+$IS_LINUX && if_exists "xclip" && alias copy="xclip"
+$IS_WSL && if_exists "clip.exe" && alias copy="clip.exe"
+$IS_MACOS && if_exists "pbcopy" && alias copy="pbcopy"

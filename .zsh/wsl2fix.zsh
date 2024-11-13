@@ -21,3 +21,4 @@ export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/cursor/
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 export PATH="$PATH:/mnt/c/ProgramData/DockerDesktop/version-bin"
 export PATH="$PATH:/mnt/c/WINDOWS"
+export PATH="$PATH:/mnt/c/WINDOWS/System32"
