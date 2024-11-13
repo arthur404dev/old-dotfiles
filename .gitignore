@@ -1,9 +1,10 @@
-.config/nushell/history.txt
-.config/tmux/plugins
-.config/io.datasette.llm
-.config/neofetch/images/normal-center-400*
-.config/lazygit/state.yml
-.config/nvim/lazy-lock.json
+*/nushell/history.txt
+*/tmux/plugins
+*/io.datasette.llm
+*/neofetch/images/normal-center-400*
+*/lazygit/state.yml
+*/nvim/lazy-lock.json
+*/btop/btop.log
 .local
 
 
