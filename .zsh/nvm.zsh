@@ -1,21 +1,32 @@
-# Define NVM_DIR if not already defined
-export NVM_DIR="$HOME/.nvm"
+# Define nvm setup function
+nvm_load() {
+    # Load nvm from Homebrew installation
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$(brew --prefix)/opt/nvm/nvm.sh" ] && \. "$(brew --prefix)/opt/nvm/nvm.sh"
+    [ -s "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix)/opt/nvm/etc/bash_completion.d/nvm"
+}
 
-# Lazy-load nvm when `nvm`, `node`, or `npm` is invoked
-if [ -s "$NVM_DIR/nvm.sh" ]; then
-  load_nvm() {
-    # Unalias the commands so they don't call this function recursively
-    unalias nvm node npm
-    # Load nvm script
-    . "$NVM_DIR/nvm.sh"
-    # Load bash completion if necessary
-    [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
-    # Call the command that triggered the function, passing any arguments
-    "$@"
-  }
+# Create placeholder functions
+nvm() {
+    unset -f nvm node npm npx
+    nvm_load
+    nvm "$@"
+}
 
-  # Create aliases that trigger the lazy-loading function
-  alias nvm='load_nvm nvm'
-  alias node='load_nvm node'
-  alias npm='load_nvm npm'
-fi
+node() {
+    unset -f nvm node npm npx
+    nvm_load
+    node "$@"
+}
+
+npm() {
+    unset -f nvm node npm npx
+    nvm_load
+    npm "$@"
+}
+
+npx() {
+    unset -f nvm node npm npx
+    nvm_load
+    npx "$@"
+}
