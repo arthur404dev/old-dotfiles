@@ -30,6 +30,11 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 [[ -f ~/.zsh/ollama.zsh ]] && source ~/.zsh/ollama.zsh
 [[ -f ~/.zsh/ai.zsh ]] && source ~/.zsh/ai.zsh
 
+# Load All work private files
+for file in ~/.zsh/work/*; do
+    source $file
+done
+
 # Load All Programs from /programs
 for file in ~/.zsh/programs/*; do
     source $file
