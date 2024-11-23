@@ -1,6 +1,6 @@
 k9s:
   liveViewAutoRefresh: false
-  screenDumpDir: /home/admin/.local/state/k9s/screen-dumps
+  screenDumpDir: ${HOME}/.local/state/k9s/screen-dumps
   refreshRate: 2
   maxConnRetry: 5
   readOnly: false
@@ -12,7 +12,7 @@ k9s:
     crumbsless: false
     reactive: false
     noIcons: false
-    defaultsToFullScreen: true
+    defaultsToFullScreen: false
     skin: catppuccin-mocha-transparent
   skipLatestRevCheck: false
   disablePodCounting: false
