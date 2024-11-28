@@ -8,21 +8,21 @@ return {
       -- Credit: glepnir
       local lualine = require("lualine")
 
--- Color table for highlights
--- stylua: ignore
-local colors = {
-  bg       = '#1e1e2e',
-  fg       = '#cdd6f4',
-  yellow   = '#f9e2af',
-  cyan     = '#74c7ec',
-  darkblue = '#89b4fa',
-  green    = '#94e2d5',
-  orange   = '#fab387',
-  violet   = '#b4befe',
-  magenta  = '#cba6f7',
-  blue     = '#89b4fa',
-  red      = '#f5c2e7',
-}
+      -- Color table for highlights
+      -- stylua: ignore
+      local colors = {
+        bg       = '#1e1e2e',
+        fg       = '#cdd6f4',
+        yellow   = '#f9e2af',
+        cyan     = '#74c7ec',
+        darkblue = '#89b4fa',
+        green    = '#94e2d5',
+        orange   = '#fab387',
+        violet   = '#b4befe',
+        magenta  = '#cba6f7',
+        blue     = '#89b4fa',
+        red      = '#f5c2e7',
+      }
 
       local conditions = {
         buffer_not_empty = function()
@@ -151,6 +151,8 @@ local colors = {
           color_info = { fg = colors.cyan },
         },
       })
+
+      ins_left(LazyVim.lualine.cmp_source("supermaven"))
 
       -- Insert mid section. You can make any number of sections in neovim :)
       -- for lualine it's any number greater then 2

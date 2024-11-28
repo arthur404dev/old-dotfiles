@@ -1,7 +1,14 @@
+local nonicons_extension = require("nvim-nonicons.extentions.nvim-tree")
+
 return {
   {
     "nvim-neo-tree/neo-tree.nvim",
     opts = {
+      renderer = {
+        icons = {
+          glyphs = nonicons_extension.glyphs,
+        },
+      },
       window = {
         position = "right",
       },
