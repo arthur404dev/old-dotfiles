@@ -1,3 +1,0 @@
-return {
-  { "yamatsum/nvim-nonicons" },
-}
