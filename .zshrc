@@ -22,7 +22,8 @@ ENSURE_PACKAGES=false
 $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 
 # Load Environment Handlers and Libraries
-[[ -f ~/.zsh/nvm.zsh ]] && source ~/.zsh/nvm.zsh
+# [[ -f ~/.zsh/nvm.zsh ]] && source ~/.zsh/nvm.zsh
+[[ -f ~/.zsh/volta.zsh ]] && source ~/.zsh/volta.zsh
 [[ -f ~/.zsh/pyenv.zsh ]] && source ~/.zsh/pyenv.zsh
 [[ -f ~/.zsh/libs.zsh ]] && source ~/.zsh/libs.zsh
 
