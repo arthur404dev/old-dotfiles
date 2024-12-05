@@ -32,14 +32,18 @@ $IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
 [[ -f ~/.zsh/ai.zsh ]] && source ~/.zsh/ai.zsh
 
 # Load All work private files
-for file in ~/.zsh/work/*; do
-    source $file
-done
+if [ -d ~/.zsh/work ] && [ "$(ls -A ~/.zsh/work)" ]; then
+  for file in ~/.zsh/work/*; do
+      source $file
+  done
+fi
 
 # Load All Programs from /programs
-for file in ~/.zsh/programs/*; do
-    source $file
-done
+if [ -d ~/.zsh/programs ] && [ "$(ls -A ~/.zsh/programs)" ]; then
+  for file in ~/.zsh/programs/*; do
+      source $file
+  done
+fi
 
 # Exporters
 [[ -f ~/.zsh/exporters.zsh ]] && source ~/.zsh/exporters.zsh
