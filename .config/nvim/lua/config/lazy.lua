@@ -13,12 +13,16 @@ require("lazy").setup({
     -- import any extras modules here
     -- modules: ai
     { import = "lazyvim.plugins.extras.ai.supermaven" },
-    -- modules: ui
-    { import = "lazyvim.plugins.extras.ui.alpha" },
-    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- modules: coding
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
+    -- modules: editor
+    { import = "lazyvim.plugins.extras.editor.illuminate" },
+    { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    -- modules: ui
+    { import = "lazyvim.plugins.extras.ui.alpha" },
+    { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- modules: lang
     { import = "lazyvim.plugins.extras.lang.typescript" },
     { import = "lazyvim.plugins.extras.lang.json" },
