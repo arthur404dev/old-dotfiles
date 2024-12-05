@@ -28,7 +28,7 @@ return {
           },
         },
         neotest = true,
-        neotree = true,
+        neotree = false,
         noice = true,
         notify = true,
         semantic_tokens = true,
