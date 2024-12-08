@@ -12,7 +12,7 @@ return {
     keys = {
       { "<leader>ma", "<cmd>Grapple toggle<cr>", desc = "Grapple toggle tag" },
       { "<leader>mm", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple open tags window" },
-      { "<leader>md", "<cmd>Grapple reset<cr>", desc = "Grapple reset tags" },
+      { "<leader>mr", "<cmd>Grapple reset<cr>", desc = "Grapple reset tags" },
       { "<leader>[", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
       { "<leader>]", "<cmd>Grapple cycle_tass prev<cr>", desc = "Grapple cycle previous tag" },
 
