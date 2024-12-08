@@ -28,7 +28,7 @@ return {
           },
         },
         neotest = true,
-        neotree = false,
+        neotree = true,
         noice = true,
         notify = true,
         semantic_tokens = true,
@@ -38,5 +38,16 @@ return {
         which_key = true,
       },
     },
+    config = function(_, opts)
+      opts.highlight_overrides = {
+        all = function(colors)
+          return {
+            NeoTreeNormal = { fg = colors.text, bg = colors.base },
+            NeoTreeNormalNC = { fg = colors.text, bg = colors.base },
+          }
+        end,
+      }
+      require("catppuccin").setup(opts)
+    end,
   },
 }
