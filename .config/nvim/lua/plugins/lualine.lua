@@ -99,37 +99,37 @@ return {
         color = function()
           -- auto change color according to neovims mode
           local mode_color = {
-            n = colors.red,
+            n = colors.blue,
             i = colors.green,
-            v = colors.blue,
-            [""] = colors.blue,
-            V = colors.blue,
+            v = colors.yellow,
+            [""] = colors.yellow,
+            V = colors.yellow,
             c = colors.magenta,
-            no = colors.red,
+            no = colors.blue,
             s = colors.orange,
             S = colors.orange,
             [""] = colors.orange,
-            ic = colors.yellow,
+            ic = colors.red,
             R = colors.violet,
             Rv = colors.violet,
-            cv = colors.red,
-            ce = colors.red,
+            cv = colors.blue,
+            ce = colors.blue,
             r = colors.cyan,
             rm = colors.cyan,
             ["r?"] = colors.cyan,
-            ["!"] = colors.red,
-            t = colors.red,
+            ["!"] = colors.blue,
+            t = colors.blue,
           }
           return { fg = mode_color[vim.fn.mode()] }
         end,
         padding = { right = 1 },
       })
 
-      ins_left({
-        -- filesize component
-        "filesize",
-        cond = conditions.buffer_not_empty,
-      })
+      -- ins_left({
+      --   -- filesize component
+      --   "filesize",
+      --   cond = conditions.buffer_not_empty,
+      -- })
 
       ins_left({
         "filename",
@@ -152,8 +152,6 @@ return {
         },
       })
 
-      ins_left(LazyVim.lualine.cmp_source("supermaven"))
-
       -- Insert mid section. You can make any number of sections in neovim :)
       -- for lualine it's any number greater then 2
       ins_left({
@@ -163,9 +161,28 @@ return {
       })
 
       ins_left({
+        "branch",
+        icon = "",
+        color = { fg = colors.violet, gui = "bold" },
+      })
+
+      ins_left({
+        "diff",
+        -- Is it me or the symbol for modified us really weird
+        symbols = { added = " ", modified = "󰝤 ", removed = " " },
+        diff_color = {
+          added = { fg = colors.green },
+          modified = { fg = colors.orange },
+          removed = { fg = colors.red },
+        },
+        cond = conditions.hide_in_width,
+      })
+
+      -- Add components to right sections
+      ins_right({
         -- Lsp server name .
         function()
-          local msg = "No Active Lsp"
+          local msg = "no lsp"
           local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
           local clients = vim.lsp.get_active_clients()
           if next(clients) == nil then
@@ -179,11 +196,10 @@ return {
           end
           return msg
         end,
-        icon = " LSP:",
+        icon = " ",
         color = { fg = "#ffffff", gui = "bold" },
       })
 
-      -- Add components to right sections
       ins_right({
         "o:encoding", -- option component same as &encoding in viml
         fmt = string.upper, -- I'm not sure why it's upper case either ;)
@@ -196,24 +212,6 @@ return {
         fmt = string.upper,
         icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
         color = { fg = colors.green, gui = "bold" },
-      })
-
-      ins_right({
-        "branch",
-        icon = "",
-        color = { fg = colors.violet, gui = "bold" },
-      })
-
-      ins_right({
-        "diff",
-        -- Is it me or the symbol for modified us really weird
-        symbols = { added = " ", modified = "󰝤 ", removed = " " },
-        diff_color = {
-          added = { fg = colors.green },
-          modified = { fg = colors.orange },
-          removed = { fg = colors.red },
-        },
-        cond = conditions.hide_in_width,
       })
 
       ins_right({
