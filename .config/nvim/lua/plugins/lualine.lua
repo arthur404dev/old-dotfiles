@@ -3,25 +3,35 @@ return {
     "nvim-lualine/lualine.nvim",
     event = "VeryLazy",
     opts = function()
-      -- Eviline config for lualine
-      -- Author: shadmansaleh
-      -- Credit: glepnir
       local lualine = require("lualine")
 
-      -- Color table for highlights
-      -- stylua: ignore
       local colors = {
-        bg       = '#1e1e2e',
-        fg       = '#cdd6f4',
-        yellow   = '#f9e2af',
-        cyan     = '#74c7ec',
-        darkblue = '#89b4fa',
-        green    = '#94e2d5',
-        orange   = '#fab387',
-        violet   = '#b4befe',
-        magenta  = '#cba6f7',
-        blue     = '#89b4fa',
-        red      = '#f5c2e7',
+        bg = "#1e1e2e",
+        fg = "#cdd6f4",
+        rosewater = "#f5e0dc",
+        flamingo = "#f2cdcd",
+        pink = "#f5c2e7",
+        mauve = "#cba6f7",
+        red = "#f38ba8",
+        maroon = "#eba0ac",
+        peach = "#fab387",
+        yellow = "#f9e2af",
+        green = "#a6e3a1",
+        teal = "#94e2d5",
+        sky = "#89dceb",
+        sapphire = "#74c7ec",
+        blue = "#89b4fa",
+        lavender = "#b4befe",
+        subtext_1 = "#a6adc8",
+        subtext_0 = "#bac2de",
+        overlay_2 = "#9399b2",
+        overlay_1 = "#7f849c",
+        overlay_0 = "#6c7086",
+        surface_2 = "#585b70",
+        surface_1 = "#45475a",
+        surface_0 = "#313244",
+        mantle = "#181825",
+        crust = "#11111b",
       }
 
       local conditions = {
@@ -100,23 +110,23 @@ return {
           -- auto change color according to neovims mode
           local mode_color = {
             n = colors.blue,
-            i = colors.green,
-            v = colors.yellow,
-            [""] = colors.yellow,
-            V = colors.yellow,
-            c = colors.magenta,
+            i = colors.mauve,
+            v = colors.pink,
+            [""] = colors.pink,
+            V = colors.pink,
+            c = colors.green,
             no = colors.blue,
-            s = colors.orange,
-            S = colors.orange,
-            [""] = colors.orange,
+            s = colors.peach,
+            S = colors.peach,
+            [""] = colors.peach,
             ic = colors.red,
-            R = colors.violet,
-            Rv = colors.violet,
+            R = colors.lavender,
+            RR = colors.lavender,
             cv = colors.blue,
             ce = colors.blue,
-            r = colors.cyan,
-            rm = colors.cyan,
-            ["r?"] = colors.cyan,
+            r = colors.teal,
+            rm = colors.teal,
+            ["r?"] = colors.teal,
             ["!"] = colors.blue,
             t = colors.blue,
           }
@@ -134,12 +144,12 @@ return {
       ins_left({
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.magenta, gui = "bold" },
+        color = { fg = colors.mauve, gui = "bold" },
       })
 
-      ins_left({ "location" })
+      ins_left({ "location", color = { fg = colors.overlay_0 } })
 
-      ins_left({ "progress", color = { fg = colors.fg, gui = "bold" } })
+      ins_left({ "progress", color = { fg = colors.overlay_0, gui = "bold" } })
 
       ins_left({
         "diagnostics",
@@ -148,25 +158,36 @@ return {
         diagnostics_color = {
           color_error = { fg = colors.red },
           color_warn = { fg = colors.yellow },
-          color_info = { fg = colors.cyan },
+          color_info = { fg = colors.teal },
         },
       })
 
       -- Insert mid section. You can make any number of sections in neovim :)
       -- for lualine it's any number greater then 2
-      -- ins_left({
-      --   function()
-      --     return "%="
-      --   end,
-      -- })
+      ins_left({
+        function()
+          return "%="
+        end,
+      })
+
+      ins_left({
+        "buffers",
+        hide_filename_extension = true,
+        mode = 2,
+        max_length = vim.o.columns * 0.25,
+        buffers_color = {
+          active = { fg = colors.mauve },
+          inactive = { fg = colors.surface_0 },
+        },
+      })
 
       -- Add components to right sections
       ins_right({
         -- Lsp server name .
         function()
           local msg = "no lsp"
-          local buf_ft = vim.api.nvim_buf_get_option(0, "filetype")
-          local clients = vim.lsp.get_active_clients()
+          local buf_ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
+          local clients = vim.lsp.get_clients()
           if next(clients) == nil then
             return msg
           end
@@ -179,36 +200,33 @@ return {
           return msg
         end,
         icon = " ",
-        color = { fg = "#ffffff", gui = "bold" },
+        color = { fg = colors.lavender, gui = "bold" },
       })
 
       ins_right({
-        "o:encoding", -- option component same as &encoding in viml
-        fmt = string.upper, -- I'm not sure why it's upper case either ;)
+        "o:encoding",
         cond = conditions.hide_in_width,
         color = { fg = colors.blue, gui = "bold" },
       })
 
       ins_right({
         "fileformat",
-        fmt = string.upper,
-        icons_enabled = false, -- I think icons are cool but Eviline doesn't have them. sigh
+        icons_enabled = true,
         color = { fg = colors.blue, gui = "bold" },
       })
 
       ins_right({
         "branch",
         icon = "",
-        color = { fg = colors.violet, gui = "bold" },
+        color = { fg = colors.lavender, gui = "bold" },
       })
 
       ins_right({
         "diff",
-        -- Is it me or the symbol for modified us really weird
         symbols = { added = " ", modified = "󰝤 ", removed = " " },
         diff_color = {
           added = { fg = colors.green },
-          modified = { fg = colors.orange },
+          modified = { fg = colors.peach },
           removed = { fg = colors.red },
         },
         cond = conditions.hide_in_width,
@@ -222,7 +240,6 @@ return {
         padding = { left = 1 },
       })
 
-      -- Now don't forget to initialize lualine
       lualine.setup(config)
       return config
     end,
