@@ -1,3 +1,32 @@
+local colors = {
+  bg = "#1e1e2e",
+  fg = "#cdd6f4",
+  rosewater = "#f5e0dc",
+  flamingo = "#f2cdcd",
+  pink = "#f5c2e7",
+  mauve = "#cba6f7",
+  red = "#f38ba8",
+  maroon = "#eba0ac",
+  peach = "#fab387",
+  yellow = "#f9e2af",
+  green = "#a6e3a1",
+  teal = "#94e2d5",
+  sky = "#89dceb",
+  sapphire = "#74c7ec",
+  blue = "#89b4fa",
+  lavender = "#b4befe",
+  subtext_1 = "#a6adc8",
+  subtext_0 = "#bac2de",
+  overlay_2 = "#9399b2",
+  overlay_1 = "#7f849c",
+  overlay_0 = "#6c7086",
+  surface_2 = "#585b70",
+  surface_1 = "#45475a",
+  surface_0 = "#313244",
+  mantle = "#181825",
+  crust = "#11111b",
+}
+
 return {
   { "nvim-tree/nvim-web-devicons" },
   {
@@ -49,30 +78,7 @@ return {
               end
             end
             if #labels > 0 then
-              table.insert(labels, { " ┊" })
-            end
-            return labels
-          end
-
-          local function get_mini_diff()
-            local icons = {
-              add = lazy_icons.git.added,
-              change = lazy_icons.git.modified,
-              delete = lazy_icons.git.removed,
-            }
-            local signs = vim.b[props.buf].minidiff_summary
-
-            local labels = {}
-            if signs == nil then
-              return labels
-            end
-            for name, icon in pairs(icons) do
-              if tonumber(signs[name]) and signs[name] > 0 then
-                table.insert(labels, { " ", icon .. signs[name], group = "MiniDiffSign" .. name })
-              end
-            end
-            if #labels > 0 then
-              table.insert(labels, { " 󰊢 " .. signs.n_ranges .. " ┊" })
+              table.insert(labels, { " |" })
             end
             return labels
           end
@@ -81,17 +87,16 @@ return {
             local grapple_status
             grapple_status = require("grapple").name_or_index({ buffer = props.buf }) or ""
             if grapple_status ~= "" then
-              grapple_status = { { " 󰛢 ", group = "Function" }, { grapple_status, group = "Constant" } }
+              grapple_status = { { " 󰛢 ", guifg = colors.sky }, { grapple_status, guifg = colors.sky } }
             end
             return grapple_status
           end
 
           return {
             { get_diagnostics() },
-            { get_mini_diff() },
             { get_grapple_status() },
             { get_filename() },
-            group = props.focused and "ColorColumn" or "SignColumn",
+            guibg = props.focused and colors.mantle or colors.surface_0,
           }
         end,
       })
