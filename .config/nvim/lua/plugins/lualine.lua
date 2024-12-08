@@ -183,6 +183,23 @@ return {
 
       -- Add components to right sections
       ins_right({
+        "diff",
+        symbols = { added = " ", modified = "󰝤 ", removed = " " },
+        diff_color = {
+          added = { fg = colors.green },
+          modified = { fg = colors.peach },
+          removed = { fg = colors.red },
+        },
+        cond = conditions.hide_in_width,
+      })
+
+      ins_right({
+        "branch",
+        icon = "",
+        color = { fg = colors.lavender, gui = "bold" },
+      })
+
+      ins_right({
         -- Lsp server name .
         function()
           local msg = "no lsp"
@@ -213,23 +230,6 @@ return {
         "fileformat",
         icons_enabled = true,
         color = { fg = colors.blue, gui = "bold" },
-      })
-
-      ins_right({
-        "branch",
-        icon = "",
-        color = { fg = colors.lavender, gui = "bold" },
-      })
-
-      ins_right({
-        "diff",
-        symbols = { added = " ", modified = "󰝤 ", removed = " " },
-        diff_color = {
-          added = { fg = colors.green },
-          modified = { fg = colors.peach },
-          removed = { fg = colors.red },
-        },
-        cond = conditions.hide_in_width,
       })
 
       ins_right({
