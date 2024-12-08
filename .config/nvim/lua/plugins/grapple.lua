@@ -15,7 +15,7 @@ return {
       { "<leader>mr", "<cmd>Grapple reset<cr>", desc = "Grapple reset tags" },
 
       { "<leader>[", "<cmd>Grapple cycle_tags next<cr>", desc = "Grapple cycle next tag" },
-      { "<leader>]", "<cmd>Grapple cycle_tass prev<cr>", desc = "Grapple cycle previous tag" },
+      { "<leader>]", "<cmd>Grapple cycle_tags prev<cr>", desc = "Grapple cycle previous tag" },
 
       { "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Select first tag" },
       { "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Select second tag" },

@@ -16,8 +16,12 @@ return {
         filtered_items = {
           visible = true,
           hide_dotfiles = false,
-          never_show = {
+          hide_by_name = {
             ".git",
+            ".DS_Store",
+          },
+          always_show = {
+            ".env",
           },
         },
       },
