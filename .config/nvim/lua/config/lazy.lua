@@ -13,13 +13,23 @@ require("lazy").setup({
     -- import any extras modules here
     -- modules: ai
     { import = "lazyvim.plugins.extras.ai.supermaven" },
+    { import = "lazyvim.plugins.extras.ai.copilot-chat" },
     -- modules: coding
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },
     { import = "lazyvim.plugins.extras.coding.yanky" },
+    { import = "lazyvim.plugins.extras.coding.yanky" },
     -- modules: editor
     { import = "lazyvim.plugins.extras.editor.illuminate" },
     { import = "lazyvim.plugins.extras.editor.inc-rename" },
+    { import = "lazyvim.plugins.extras.editor.mini-files" },
+    { import = "lazyvim.plugins.extras.editor.mini-move" },
+    { import = "lazyvim.plugins.extras.editor.navic" },
+    { import = "lazyvim.plugins.extras.editor.telescope" },
+    -- modules: formatting
+    { import = "lazyvim.plugins.extras.formatting.prettier" },
+    -- modules: linting
+    { import = "lazyvim.plugins.extras.linting.eslint" },
     -- modules: ui
     { import = "lazyvim.plugins.extras.ui.alpha" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
@@ -37,6 +47,11 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.lang.sql" },
     { import = "lazyvim.plugins.extras.lang.git" },
     { import = "lazyvim.plugins.extras.lang.helm" },
+    -- modules: util
+    { import = "lazyvim.plugins.extras.util.dot" },
+    { import = "lazyvim.plugins.extras.util.octo" },
+    { import = "lazyvim.plugins.extras.util.project" },
+    { import = "lazyvim.plugins.extras.util.mini-hipatterns" },
     -- import/override with your plugins
     { import = "plugins" },
   },
