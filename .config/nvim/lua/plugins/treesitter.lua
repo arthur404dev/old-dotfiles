@@ -5,7 +5,6 @@ return {
       ensure_installed = {
         "astro",
         "bash",
-
         "cmake",
         "cpp",
         "css",
@@ -43,14 +42,6 @@ return {
       config = function(_, opts)
         require("nvim-treesitter.configs").setup(opts)
 
-        vim.filetype.add({
-          filename = {
-            ["catppuccin_round.conf"] = "tmux",
-            ["catppuccin_bar.conf"] = "tmux",
-            ["sesh.conf"] = "tmux",
-            ["rose_pine.conf"] = "tmux",
-          },
-        })
         -- MDX
         vim.filetype.add({
           extension = {
