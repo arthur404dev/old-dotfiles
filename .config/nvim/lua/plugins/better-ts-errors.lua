@@ -3,8 +3,8 @@ return {
   dependencies = { "MunifTanjim/nui.nvim" },
   opts = {
     keymaps = {
-      toggle = "<leader>dd", -- default '<leader>dd'
-      go_to_definition = "<leader>dx", -- default '<leader>dx'
+      toggle = "<leader>xd", -- default '<leader>dd'
+      go_to_definition = "<leader>xD", -- default '<leader>dx'
     },
   },
 }

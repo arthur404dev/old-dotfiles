@@ -5,7 +5,10 @@ local keymap = vim.keymap
 --
 -- vim.keymap.del("n", "<leader>w|")
 -- vim.keymap.del("n", "<leader>|")
-keymap.set("n", "<leader>z", "gg0VG", { desc = "Select all", remap = true })
+keymap.set("n", "<leader>za", "gg0VG", { desc = "Select all", remap = true })
 keymap.set("n", "gh", "K", { desc = "Show Hover", remap = true })
 
 keymap.del("n", "<leader>K")
+keymap.del("n", "<leader>-")
+keymap.del("n", "<leader>|")
+keymap.del("n", "<leader>`")
