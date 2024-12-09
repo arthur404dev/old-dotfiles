@@ -8,115 +8,115 @@ format = """$username $env_var $all""" # Add custom formatting before other stuf
 palette = "catppuccin_mocha"
 
 [palettes.catppuccin_mocha]
-    rosewater = "#f5e0dc"
-    flamingo = "#f2cdcd"
-    pink = "#f5c2e7"
-    mauve = "#cba6f7"
-    red = "#f38ba8"
-    maroon = "#eba0ac"
-    peach = "#fab387"
-    yellow = "#f9e2af"
-    green = "#a6e3a1"
-    teal = "#94e2d5"
-    sky = "#89dceb"
-    sapphire = "#74c7ec"
-    blue = "#89b4fa"
-    lavender = "#b4befe"
-    text = "#cdd6f4"
-    subtext1 = "#bac2de"
-    subtext0 = "#a6adc8"
-    overlay2 = "#9399b2"
-    overlay1 = "#7f849c"
-    overlay0 = "#6c7086"
-    surface2 = "#585b70"
-    surface1 = "#45475a"
-    surface0 = "#313244"
-    base = "#1e1e2e"
-    mantle = "#181825"
-    crust = "#11111b"
+rosewater = "#f5e0dc"
+flamingo = "#f2cdcd"
+pink = "#f5c2e7"
+mauve = "#cba6f7"
+red = "#f38ba8"
+maroon = "#eba0ac"
+peach = "#fab387"
+yellow = "#f9e2af"
+green = "#a6e3a1"
+teal = "#94e2d5"
+sky = "#89dceb"
+sapphire = "#74c7ec"
+blue = "#89b4fa"
+lavender = "#b4befe"
+text = "#cdd6f4"
+subtext1 = "#bac2de"
+subtext0 = "#a6adc8"
+overlay2 = "#9399b2"
+overlay1 = "#7f849c"
+overlay0 = "#6c7086"
+surface2 = "#585b70"
+surface1 = "#45475a"
+surface0 = "#313244"
+base = "#1e1e2e"
+mantle = "#181825"
+crust = "#11111b"
 
 [palettes.thanos]
-    space = "#00A1E4"
-    reality = "#FF206E"
-    power = "#9D65FF"
-    soul = "#FABC2A"
-    vision = "#DDA2F6"
-    time = "##58EBD7"
-    supernova = "#F8F8F0"
-    mind = "#FFE900"
+space = "#00A1E4"
+reality = "#FF206E"
+power = "#9D65FF"
+soul = "#FABC2A"
+vision = "#DDA2F6"
+time = "##58EBD7"
+supernova = "#F8F8F0"
+mind = "#FFE900"
 
 
 # Drop ugly default prompt characters
 [character]
-    success_symbol = '[ 󰘍](bold cyan) '
-    error_symbol = "[ 󰘍](bold red)"
+success_symbol = '[  󰘍](bold blue) '
+error_symbol = "[  󰘍](bold red)"
 # Shows current username
 [username]
-    format = '[  $user]($style)'
-    style_user = "mauve bold"
-    style_root = "peach bold"
-    disabled = false
-    show_always = true
+format = '[   $user]($style)'
+style_user = "blue bold"
+style_root = "pink bold"
+disabled = false
+show_always = true
 
 # ---
 # Shows an icon depending on what device it is running on
 [env_var.STARSHIP_DEVICE]
-    format = 'on [$env_value](bold pink)'
-    variable = "STARSHIP_DEVICE"
-    disabled = false
+format = 'on [$env_value](bold mauve)'
+variable = "STARSHIP_DEVICE"
+disabled = false
 
 # Shows the hostname
 [hostname]
-    ssh_only = false
-    format = "[$hostname](bold pink) "
-    disabled = false
+ssh_only = false
+format = "[$hostname](bold mauve) "
+disabled = false
 
 # Shows an icon depending on what distro it is running on
 [env_var.STARSHIP_DISTRO]
-    format = '[ 󰌷 $env_value](bold pink)'
-    variable = "STARSHIP_DISTRO"
-    disabled = false
+format = '[ 󰌷 $env_value](bold mauve)'
+variable = "STARSHIP_DISTRO"
+disabled = false
 
 # Shows current directory
 [directory]
-    truncation_length = 1
-    truncation_symbol = "…/"
-    home_symbol = "  ~"
-    read_only_style = "197"
-    read_only = "  "
-    format = "at [$path]($style)[$read_only]($read_only_style) "
+truncation_length = 1
+truncation_symbol = "…/"
+home_symbol = "  ~"
+read_only_style = "197"
+read_only = "  "
+format = "at [$path]($style)[$read_only]($read_only_style) "
 
 # Shows current git branch
 [git_branch]
-    symbol = " "
-    format = "via [$symbol$branch]($style)"
-    # truncation_length = 4
-    truncation_symbol = "…/"
-    style = "bold green"
+symbol = " "
+format = "via [$symbol$branch]($style)"
+# truncation_length = 4
+truncation_symbol = "…/"
+style = "bold lavender"
 
 # Shows current git status
 [git_status]
-    format = '[$all_status$ahead_behind]($style) '
-    style = "bold green"
-    conflicted = "  "
-    untracked = "  "
-    ahead = " ⇡${count}"
-    diverged = " ⇕⇡${ahead_count}⇣${behind_count}"
-    behind = " ⇣${count}"
-    stashed = " "
-    modified = "  "
-    staged = '[ 󱅃 \($count\)](green)'
-    renamed = "  "
-    deleted = "  "
+format = '[$all_status$ahead_behind]($style) '
+style = "bold lavender"
+conflicted = "  "
+untracked = "  "
+ahead = " ⇡${count}"
+diverged = " ⇕⇡${ahead_count}⇣${behind_count}"
+behind = " ⇣${count}"
+stashed = " "
+modified = '[  \($count\)](peach)'
+staged = '[ 󱅃 \($count\)](green)'
+renamed = "  "
+deleted = '[  \($count\)](red)'
 
 
 # Shows kubernetes context and namespace
 [kubernetes]
-    format = 'via [󰠳 $context\($namespace\)](bold blue) '
-    disabled = false
+format = 'via [󰠳 $context\($namespace\)](bold sky) '
+disabled = false
 
 # Shows localip for ssh-connections
 [localip]
-    ssh_only = true
-    format = '[\( $localipv4\)](bold sapphire) '
-    disabled = false
+ssh_only = true
+format = '[\( $localipv4\)](bold teal) '
+disabled = false
