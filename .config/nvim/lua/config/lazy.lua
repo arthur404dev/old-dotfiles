@@ -13,7 +13,7 @@ require("lazy").setup({
     -- import any extras modules here
     -- modules: ai
     { import = "lazyvim.plugins.extras.ai.supermaven" },
-    { import = "lazyvim.plugins.extras.ai.copilot-chat" },
+    -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
     -- modules: coding
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
     { import = "lazyvim.plugins.extras.coding.mini-comment" },

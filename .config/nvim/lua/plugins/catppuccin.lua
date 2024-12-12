@@ -44,6 +44,7 @@ return {
           return {
             NeoTreeNormal = { fg = colors.text, bg = colors.base },
             NeoTreeNormalNC = { fg = colors.text, bg = colors.base },
+            WinSeparator = { fg = colors.base, bg = colors.base },
           }
         end,
       }
