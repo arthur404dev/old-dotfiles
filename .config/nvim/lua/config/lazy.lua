@@ -11,8 +11,8 @@ require("lazy").setup({
     -- add LazyVim and import its plugins
     { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import any extras modules here
-    -- modules: ai
-    { import = "lazyvim.plugins.extras.ai.supermaven" },
+    -- modules: ai -- For now using avante with copilot
+    -- { import = "lazyvim.plugins.extras.ai.supermaven" },
     -- { import = "lazyvim.plugins.extras.ai.copilot-chat" },
     -- modules: coding
     { import = "lazyvim.plugins.extras.coding.mini-surround" },
