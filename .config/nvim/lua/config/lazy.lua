@@ -26,7 +26,7 @@ require("lazy").setup({
     { import = "lazyvim.plugins.extras.editor.mini-files" },
     { import = "lazyvim.plugins.extras.editor.mini-move" },
     { import = "lazyvim.plugins.extras.editor.navic" },
-    { import = "lazyvim.plugins.extras.editor.telescope" },
+    -- { import = "lazyvim.plugins.extras.editor.telescope" },
     -- modules: formatting
     { import = "lazyvim.plugins.extras.formatting.prettier" },
     -- modules: linting
