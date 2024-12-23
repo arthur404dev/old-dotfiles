@@ -10,4 +10,3 @@ export EDITOR=nvim
 export KUBE_EDITOR=nvim
 
 if [ -e /home/admin/.nix-profile/etc/profile.d/nix.sh ]; then . /home/admin/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
