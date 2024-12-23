@@ -1,54 +1,56 @@
 export XDG_CONFIG_HOME="$HOME/.config"
 ENSURE_PACKAGES=false
+
 # Load Package Manager (zinit)
-[[ -f ~/.zsh/zinit.zsh ]] && source ~/.zsh/zinit.zsh
+[[ -f "$HOME/.zsh/zinit.zsh" ]] && source "$HOME/.zsh/zinit.zsh"
 
 # Load Helpers
-[[ -f ~/.zsh/helpers.zsh ]] && source ~/.zsh/helpers.zsh
+[[ -f "$HOME/.zsh/helpers.zsh" ]] && source "$HOME/.zsh/helpers.zsh"
 
-# Load Functions, Aliases and Config
-[[ -f ~/.zsh/functions.zsh ]] && source ~/.zsh/functions.zsh
-[[ -f ~/.zsh/aliases.zsh ]] && source ~/.zsh/aliases.zsh
-[[ -f ~/.zsh/config.zsh ]] && source ~/.zsh/config.zsh
-[[ -f ~/.zsh/path.zsh ]] && source ~/.zsh/path.zsh
-[[ -f ~/.zsh/completions.zsh ]] && source ~/.zsh/completions.zsh
+# Load Functions, Aliases, and Config
+[[ -f "$HOME/.zsh/functions.zsh" ]] && source "$HOME/.zsh/functions.zsh"
+[[ -f "$HOME/.zsh/aliases.zsh" ]] && source "$HOME/.zsh/aliases.zsh"
+[[ -f "$HOME/.zsh/config.zsh" ]] && source "$HOME/.zsh/config.zsh"
+[[ -f "$HOME/.zsh/path.zsh" ]] && source "$HOME/.zsh/path.zsh"
+[[ -f "$HOME/.zsh/completions.zsh" ]] && source "$HOME/.zsh/completions.zsh"
 
 # Load Plugins and Themes
-[[ -f ~/.zsh/plugins.zsh ]] && source ~/.zsh/plugins.zsh
-[[ -f ~/.zsh/starship.zsh ]] && source ~/.zsh/starship.zsh
+[[ -f "$HOME/.zsh/plugins.zsh" ]] && source "$HOME/.zsh/plugins.zsh"
+[[ -f "$HOME/.zsh/starship.zsh" ]] && source "$HOME/.zsh/starship.zsh"
 
 # Load Homebrew and fix WSL2 interop
-[[ -f ~/.zsh/homebrew.zsh ]] && source ~/.zsh/homebrew.zsh
-$IS_WSL && [[ -f ~/.zsh/wsl2fix.zsh ]] && source ~/.zsh/wsl2fix.zsh
+[[ -f "$HOME/.zsh/homebrew.zsh" ]] && source "$HOME/.zsh/homebrew.zsh"
+$IS_WSL && [[ -f "$HOME/.zsh/wsl2fix.zsh" ]] && source "$HOME/.zsh/wsl2fix.zsh"
 
 # Load Environment Handlers and Libraries
-# [[ -f ~/.zsh/nvm.zsh ]] && source ~/.zsh/nvm.zsh
-[[ -f ~/.zsh/volta.zsh ]] && source ~/.zsh/volta.zsh
-[[ -f ~/.zsh/pyenv.zsh ]] && source ~/.zsh/pyenv.zsh
-[[ -f ~/.zsh/libs.zsh ]] && source ~/.zsh/libs.zsh
+# [[ -f "$HOME/.zsh/nvm.zsh" ]] && source "$HOME/.zsh/nvm.zsh"
+[[ -f "$HOME/.zsh/volta.zsh" ]] && source "$HOME/.zsh/volta.zsh"
+[[ -f "$HOME/.zsh/pyenv.zsh" ]] && source "$HOME/.zsh/pyenv.zsh"
+[[ -f "$HOME/.zsh/libs.zsh" ]] && source "$HOME/.zsh/libs.zsh"
 
 # Load Artificial Intelligence
-[[ -f ~/.zsh/ollama.zsh ]] && source ~/.zsh/ollama.zsh
-[[ -f ~/.zsh/ai.zsh ]] && source ~/.zsh/ai.zsh
+[[ -f "$HOME/.zsh/ollama.zsh" ]] && source "$HOME/.zsh/ollama.zsh"
+[[ -f "$HOME/.zsh/ai.zsh" ]] && source "$HOME/.zsh/ai.zsh"
 
 # Load All work private files
-if [ -d ~/.zsh/work ] && [ "$(ls -A ~/.zsh/work)" ]; then
-  for file in ~/.zsh/work/*; do
-      source $file
+if [ -d "$HOME/.zsh/work" ] && [ "$(ls -A "$HOME/.zsh/work")" ]; then
+  for file in "$HOME/.zsh/work/"*; do
+    # shellcheck source=/dev/null
+    source "$file"
   done
 fi
 
 # Load All Programs from /programs
-if [ -d ~/.zsh/programs ] && [ "$(ls -A ~/.zsh/programs)" ]; then
-  for file in ~/.zsh/programs/*; do
-      source $file
+if [ -d "$HOME/.zsh/programs" ] && [ "$(ls -A "$HOME/.zsh/programs")" ]; then
+  for file in "$HOME/.zsh/programs/"*; do
+    # shellcheck source=/dev/null
+    source "$file"
   done
 fi
 
-# Exporters
-[[ -f ~/.zsh/exporters.zsh ]] && source ~/.zsh/exporters.zsh
-
 # Start tmux if not already running
-[[ -f ~/.zsh/tmux.zsh ]] && source ~/.zsh/tmux.zsh
+if [ -z "$SSH_CONNECTION" ] && [ -f "$HOME/.zsh/tmux.zsh" ]; then
+  source "$HOME/.zsh/tmux.zsh"
+fi
 
-# --->
+# -- System Added...
