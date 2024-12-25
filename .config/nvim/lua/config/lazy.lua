@@ -32,7 +32,7 @@ require("lazy").setup({
     -- modules: linting
     { import = "lazyvim.plugins.extras.linting.eslint" },
     -- modules: ui
-    { import = "lazyvim.plugins.extras.ui.alpha" },
+    -- { import = "lazyvim.plugins.extras.ui.alpha" },
     { import = "lazyvim.plugins.extras.ui.mini-animate" },
     -- modules: lang
     { import = "lazyvim.plugins.extras.lang.typescript" },

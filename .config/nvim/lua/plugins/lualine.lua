@@ -173,7 +173,7 @@ return {
       ins_left({
         "buffers",
         hide_filename_extension = true,
-        mode = 2,
+        mode = 1,
         max_length = vim.o.columns * 0.25,
         buffers_color = {
           active = { fg = colors.mauve },
