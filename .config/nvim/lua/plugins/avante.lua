@@ -6,11 +6,8 @@ return {
     version = false, -- set this if you want to always pull the latest change
     opts = {
       provider = "copilot",
-      auto_suggestions_provider = "copilot",
+      auto_suggestions_provider = "gemini",
       use_absolute_path = true,
-      behaviour = {
-        auto_suggestions = true,
-      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     build = "make",

@@ -6,3 +6,4 @@ local opt = vim.opt
 vim.g.lazygit_config = false
 vim.o.termguicolors = true
 opt.wrap = true
+opt.cmdheight = 0

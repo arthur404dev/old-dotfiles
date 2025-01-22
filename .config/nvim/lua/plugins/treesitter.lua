@@ -14,6 +14,7 @@ return {
         "go",
         "gomod",
         "gosum",
+        "graphql",
         "gowork",
         "html",
         "http",
