@@ -11,6 +11,8 @@
 */test/
 */configstore
 */github-copilot
+*/nextjs-nodejs
+*/turborepo
 .local
 
 .aider*
