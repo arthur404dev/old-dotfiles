@@ -1,0 +1,5 @@
+theme: catppuccin-mocha
+editor: nvim
+response:
+  prettify_json: true
+pager_json: jq
