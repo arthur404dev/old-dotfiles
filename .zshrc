@@ -25,6 +25,7 @@ $IS_WSL && [[ -f "$HOME/.zsh/wsl2fix.zsh" ]] && source "$HOME/.zsh/wsl2fix.zsh"
 # Load Environment Handlers and Libraries
 # [[ -f "$HOME/.zsh/nvm.zsh" ]] && source "$HOME/.zsh/nvm.zsh"
 [[ -f "$HOME/.zsh/volta.zsh" ]] && source "$HOME/.zsh/volta.zsh"
+[[ -f "$HOME/.zsh/pnpm.zsh" ]] && source "$HOME/.zsh/pnpm.zsh"
 [[ -f "$HOME/.zsh/pyenv.zsh" ]] && source "$HOME/.zsh/pyenv.zsh"
 [[ -f "$HOME/.zsh/libs.zsh" ]] && source "$HOME/.zsh/libs.zsh"
 
