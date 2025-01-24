@@ -69,18 +69,6 @@ return {
           opts = { insert = true }, -- Insert emoji (default) or complete its name
         },
       },
-      -- command line completion, thanks to dpetka2001 in reddit
-      -- https://www.reddit.com/r/neovim/comments/1hjjf21/comment/m37fe4d/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button
-      cmdline = function()
-        local type = vim.fn.getcmdtype()
-        if type == "/" or type == "?" then
-          return { "buffer" }
-        end
-        if type == ":" then
-          return { "cmdline" }
-        end
-        return {}
-      end,
     })
 
     opts.completion = {
@@ -133,22 +121,22 @@ return {
     --   end,
     -- }
 
-    opts.keymap = {
-      preset = "default",
-      ["<Tab>"] = { "snippet_forward", "fallback" },
-      ["<S-Tab>"] = { "snippet_backward", "fallback" },
-
-      ["<Up>"] = { "select_prev", "fallback" },
-      ["<Down>"] = { "select_next", "fallback" },
-      ["<C-p>"] = { "select_prev", "fallback" },
-      ["<C-n>"] = { "select_next", "fallback" },
-
-      ["<S-k>"] = { "scroll_documentation_up", "fallback" },
-      ["<S-j>"] = { "scroll_documentation_down", "fallback" },
-
-      ["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
-      -- ["<C-e>"] = { "hide", "fallback" },
-    }
+    -- opts.keymap = {
+    --   preset = "default",
+    --   ["<Tab>"] = { "snippet_forward", "fallback" },
+    --   ["<S-Tab>"] = { "snippet_backward", "fallback" },
+    --
+    --   ["<Up>"] = { "select_prev", "fallback" },
+    --   ["<Down>"] = { "select_next", "fallback" },
+    --   ["<C-p>"] = { "select_prev", "fallback" },
+    --   ["<C-n>"] = { "select_next", "fallback" },
+    --
+    --   ["<S-k>"] = { "scroll_documentation_up", "fallback" },
+    --   ["<S-j>"] = { "scroll_documentation_down", "fallback" },
+    --
+    --   ["<C-e>"] = { "show", "show_documentation", "hide_documentation" },
+    --   -- ["<C-e>"] = { "hide", "fallback" },
+    -- }
 
     return opts
   end,
