@@ -58,8 +58,8 @@ return {
             -- We are going to use lualine_c an lualine_x as left and
             -- right section. Both are highlighted by c theme .  So we
             -- are just setting default looks o statusline
-            normal = { c = { fg = colors.fg, bg = colors.mantle } },
-            inactive = { c = { fg = colors.fg, bg = colors.mantle } },
+            normal = { c = { fg = colors.fg, bg = colors.bg } },
+            inactive = { c = { fg = colors.fg, bg = colors.bg } },
           },
         },
         sections = {
@@ -132,7 +132,6 @@ return {
           }
           return { fg = mode_color[vim.fn.mode()] }
         end,
-        padding = { right = 1 },
       })
 
       -- ins_left({
@@ -140,11 +139,49 @@ return {
       --   "filesize",
       --   cond = conditions.buffer_not_empty,
       -- })
+      ins_left({
+        function()
+          return ""
+        end,
+        color = function()
+          -- auto change color according to neovims mode
+          local mode_color = {
+            n = colors.blue,
+            i = colors.mauve,
+            v = colors.pink,
+            [""] = colors.pink,
+            V = colors.pink,
+            c = colors.green,
+            no = colors.blue,
+            s = colors.peach,
+            S = colors.peach,
+            [""] = colors.peach,
+            ic = colors.red,
+            R = colors.lavender,
+            RR = colors.lavender,
+            cv = colors.blue,
+            ce = colors.blue,
+            r = colors.teal,
+            rm = colors.teal,
+            ["r?"] = colors.teal,
+            ["!"] = colors.blue,
+            t = colors.blue,
+          }
+          return { fg = mode_color[vim.fn.mode()] }
+        end,
+      })
 
       ins_left({
         "filename",
         cond = conditions.buffer_not_empty,
-        color = { fg = colors.blue, gui = "bold" },
+        color = { fg = colors.lavender, gui = "bold" },
+      })
+
+      ins_left({
+        function()
+          return "|"
+        end,
+        color = { fg = colors.surface_0 },
       })
 
       ins_left({ "location", color = { fg = colors.overlay_0 } })
@@ -195,7 +232,7 @@ return {
 
       ins_right({
         "branch",
-        icon = "",
+        icon = " ",
         color = { fg = colors.lavender, gui = "bold" },
       })
 
@@ -216,14 +253,28 @@ return {
           end
           return msg
         end,
-        icon = " ",
+        icon = " ",
         color = { fg = colors.lavender, gui = "bold" },
+      })
+
+      ins_right({
+        function()
+          return "|"
+        end,
+        color = { fg = colors.surface_0 },
       })
 
       ins_right({
         "o:encoding",
         cond = conditions.hide_in_width,
         color = { fg = colors.blue, gui = "bold" },
+      })
+
+      ins_right({
+        function()
+          return ""
+        end,
+        color = { fg = colors.blue },
       })
 
       ins_right({
