@@ -1,8 +1,11 @@
 # ~/.config/starship.toml
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
 
-add_newline = true                     # Inserts a blank line between shell prompts
-command_timeout = 1000                 # Change command timeout from 500 to 1000 ms
-format = """$username $env_var $all""" # Add custom formatting before other stuff
+add_newline = true
+command_timeout = 1000                                            # Change command timeout from 500 to 1000 ms
+format = """$time $character"""
+right_format = """$username $env_var $hostname $directory $all""" # Add custom formatting before other stuff
 
 # Add color palette
 palette = "catppuccin_mocha"
@@ -48,11 +51,11 @@ mind = "#FFE900"
 
 # Drop ugly default prompt characters
 [character]
-success_symbol = '[  󰘍](bold blue) '
-error_symbol = "[  󰘍](bold red)"
+success_symbol = '[](bold blue) '
+error_symbol = '[](bold red) '
 # Shows current username
 [username]
-format = '[   $user]($style)'
+format = '[ $user]($style)'
 style_user = "blue bold"
 style_root = "pink bold"
 disabled = false
@@ -68,7 +71,7 @@ disabled = false
 # Shows the hostname
 [hostname]
 ssh_only = false
-format = "[$hostname](bold mauve) "
+format = '[$hostname](bold mauve)'
 disabled = false
 
 # Shows an icon depending on what distro it is running on
@@ -82,9 +85,10 @@ disabled = false
 truncation_length = 1
 truncation_symbol = "…/"
 home_symbol = "  ~"
-read_only_style = "197"
+style = "bold blue"
+read_only_style = "bold mauve"
 read_only = "  "
-format = "at [$path]($style)[$read_only]($read_only_style) "
+format = "at [$path]($style)[$read_only]($read_only_style)"
 
 # Shows current git branch
 [git_branch]
@@ -109,7 +113,6 @@ staged = '[ 󱅃 \($count\)](green)'
 renamed = "  "
 deleted = '[  \($count\)](red)'
 
-
 # Shows kubernetes context and namespace
 [kubernetes]
 format = 'via [󰠳 $context\($namespace\)](bold sky) '
@@ -120,3 +123,9 @@ disabled = false
 ssh_only = true
 format = '[\( $localipv4\)](bold teal) '
 disabled = false
+
+[time]
+disabled = false
+style = "bold blue"
+format = '[$time]($style)'
+time_format = '%T'
