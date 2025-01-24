@@ -218,21 +218,9 @@ return {
         },
       })
 
-      -- Add components to right sections
-      ins_right({
-        "diff",
-        symbols = { added = " ", modified = "󰝤 ", removed = " " },
-        diff_color = {
-          added = { fg = colors.green },
-          modified = { fg = colors.peach },
-          removed = { fg = colors.red },
-        },
-        cond = conditions.hide_in_width,
-      })
-
       ins_right({
         "branch",
-        icon = " ",
+        icon = "  ",
         color = { fg = colors.lavender, gui = "bold" },
       })
 
@@ -253,7 +241,7 @@ return {
           end
           return msg
         end,
-        icon = " ",
+        icon = "  ",
         color = { fg = colors.lavender, gui = "bold" },
       })
 
