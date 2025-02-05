@@ -12,37 +12,37 @@ return {
       local filetype = vim.bo[0].filetype
 
       -- Disable for Telescope buffers
-      if filetype == "TelescopePrompt" or filetype == "minifiles" then
+      if
+          filetype == "TelescopePrompt"
+          or filetype == "minifiles"
+          or filetype == "neo-tree"
+          or filetype == "neo-tree-popup"
+          or filetype == "snacks_picker_input"
+          or filetype == "snacks_input"
+      then
         return false
       end
       return true
     end
 
+    opts.appearance = {
+      nerd_font_variant = "normal"
+    }
+
     opts.sources = vim.tbl_deep_extend("force", opts.sources or {}, {
-      default = { "lsp", "path", "snippets", "buffer", "copilot", "dadbod", "emoji" },
+      default = { "lsp", "path", "snippets", "buffer", "dadbod", "emoji", "copilot" },
+      compat = { "avante_commands", "avante_mentions", "avante_files" },
       providers = {
         lsp = {
           name = "lsp",
           enabled = true,
           module = "blink.cmp.sources.lsp",
-          kind = "LSP",
-          -- When linking markdown notes, I would get snippets and text in the
-          -- suggestions, I want those to show only if there are no LSP
-          -- suggestions
-          --
-          -- Enabled fallbacks as this seems to be working now
-          -- Disabling fallbacks as my snippets wouldn't show up when editing
-          -- lua files
-          -- fallbacks = { "snippets", "buffer" },
           score_offset = 90, -- the higher the number, the higher the priority
         },
         path = {
           name = "Path",
           module = "blink.cmp.sources.path",
           score_offset = 25,
-          -- When typing a path, I would get snippets and text in the
-          -- suggestions, I want those to show only if there are no path
-          -- suggestions
           fallbacks = { "snippets", "buffer" },
           opts = {
             trailing_slash = false,
@@ -61,65 +61,21 @@ return {
           min_keyword_length = 4,
           score_offset = 15, -- the higher the number, the higher the priority
         },
-        -- https://github.com/moyiz/blink-emoji.nvim
         emoji = {
           module = "blink-emoji",
           name = "Emoji",
-          score_offset = 15, -- the higher the number, the higher the priority
+          score_offset = 15,        -- the higher the number, the higher the priority
           opts = { insert = true }, -- Insert emoji (default) or complete its name
+        },
+        copilot = {
+          name = "copilot",
+          enabled = true,
+          module = "blink-cmp-copilot",
+          kind = "Copilot",
+          score_offset = 20, -- the higher the number, the higher the priority
         },
       },
     })
-
-    opts.completion = {
-      --   keyword = {
-      --     -- 'prefix' will fuzzy match on the text before the cursor
-      --     -- 'full' will fuzzy match on the text before *and* after the cursor
-      --     -- example: 'foo_|_bar' will match 'foo_' for 'prefix' and 'foo__bar' for 'full'
-      --     range = "full",
-      --   },
-      menu = {
-        border = "single",
-      },
-      documentation = {
-        auto_show = true,
-        window = {
-          border = "single",
-        },
-      },
-      -- Displays a preview of the selected item on the current line
-      ghost_text = {
-        enabled = true,
-      },
-    }
-
-    -- opts.fuzzy = {
-    --   -- Disabling this matches the behavior of fzf
-    --   use_typo_resistance = false,
-    --   -- Frecency tracks the most recently/frequently used items and boosts the score of the item
-    --   use_frecency = true,
-    --   -- Proximity bonus boosts the score of items matching nearby words
-    --   use_proximity = false,
-    -- }
-
-    -- opts.snippets = {
-    --   preset = "luasnip",
-    --   -- This comes from the luasnip extra, if you don't add it, won't be able to
-    --   -- jump forward or backward in luasnip snippets
-    --   -- https://www.lazyvim.org/extras/coding/luasnip#blinkcmp-optional
-    --   expand = function(snippet)
-    --     require("luasnip").lsp_expand(snippet)
-    --   end,
-    --   active = function(filter)
-    --     if filter and filter.direction then
-    --       return require("luasnip").jumpable(filter.direction)
-    --     end
-    --     return require("luasnip").in_snippet()
-    --   end,
-    --   jump = function(direction)
-    --     require("luasnip").jump(direction)
-    --   end,
-    -- }
 
     -- opts.keymap = {
     --   preset = "default",

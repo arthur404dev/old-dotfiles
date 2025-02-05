@@ -1,25 +1,41 @@
 return {
   {
     "yetone/avante.nvim",
-    event = "VeryLazy",
     lazy = false,
-    version = false, -- set this if you want to always pull the latest change
+    event = "VeryLazy",
+    build = "make",
+
     opts = {
       provider = "copilot",
-      auto_suggestions_provider = "gemini",
-      use_absolute_path = true,
+      auto_suggestions_provider = "copilot",
+      copilot = { model = "claude-3.5-sonnet" },
+      behaviour = {
+        auto_suggestions = false
+      },
+      hints = { enabled = false },
+      file_selector = {
+        provider = "fzf",
+        provider_opts = {},
+      },
+      windows = {
+        position = "right",
+        sidebar_header = {
+          rounded = false
+        },
+      }
     },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    build = "make",
-    -- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
+
     dependencies = {
+      "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
       "MunifTanjim/nui.nvim",
-      "stevearc/dressing.nvim",
       --- The below dependencies are optional,
-      "hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-      "nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-      "zbirenbaum/copilot.lua", -- for providers='copilot'
+      "echasnovski/mini.pick",         -- for file_selector provider mini.pick
+      "nvim-telescope/telescope.nvim", -- for file_selector provider telescope
+      "hrsh7th/nvim-cmp",              -- autocompletion for avante commands and mentions
+      "ibhagwan/fzf-lua",              -- for file_selector provider fzf
+      "nvim-tree/nvim-web-devicons",   -- or echasnovski/mini.icons
+      "zbirenbaum/copilot.lua",        -- for providers='copilot'
       {
         -- support for image pasting
         "HakonHarnes/img-clip.nvim",
@@ -38,13 +54,39 @@ return {
         },
       },
       {
-        -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
+        ft = function(_, ft)
+          vim.list_extend(ft, { "Avante" })
+        end,
+      },
+      {
+        "folke/which-key.nvim",
         opts = {
-          file_types = { "markdown", "Avante" },
+          spec = {
+            { "<leader>a", group = "ai" },
+          },
         },
-        ft = { "markdown", "Avante" },
       },
     },
   },
+  {
+    "stevearc/dressing.nvim",
+    lazy = true,
+    opts = {
+      input = { enabled = false },
+      select = { enabled = false },
+    },
+  },
+  {
+    "saghen/blink.compat",
+    lazy = true,
+    opts = {},
+    config = function()
+      -- monkeypatch cmp.ConfirmBehavior for Avante
+      require("cmp").ConfirmBehavior = {
+        Insert = "insert",
+        Replace = "replace",
+      }
+    end,
+  }
 }

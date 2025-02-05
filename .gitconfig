@@ -13,7 +13,7 @@
     autoSetupRemote = true
 
 [core]
-  editor = code
+  editor = nvim
   pager = delta
 
 [interactive]

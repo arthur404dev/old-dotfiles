@@ -3,9 +3,9 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 add_newline = true
-command_timeout = 1000                                            # Change command timeout from 500 to 1000 ms
-format = """$time $character"""
-right_format = """$username $env_var $hostname $directory $all""" # Add custom formatting before other stuff
+command_timeout = 1000                                 # Change command timeout from 500 to 1000 ms
+format = """$username $env_var $hostname $character"""
+right_format = """$directory $all"""                   # Add custom formatting before other stuff
 
 # Add color palette
 palette = "catppuccin_mocha"
@@ -124,8 +124,8 @@ ssh_only = true
 format = '[\( $localipv4\)](bold teal) '
 disabled = false
 
-[time]
-disabled = false
-style = "bold blue"
-format = '[$time]($style)'
-time_format = '%T'
+# [time]
+# disabled = false
+# style = "bold blue"
+# format = '[$time]($style)'
+# time_format = '%T'
