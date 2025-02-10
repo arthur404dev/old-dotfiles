@@ -1,65 +1,49 @@
 -- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This table will hold the configuration.
+-- Detect the operating system
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+local is_macos = wezterm.target_triple == "aarch64-apple-darwin" or wezterm.target_triple == "x86_64-apple-darwin"
+local is_linux = wezterm.target_triple == "x86_64-unknown-linux-gnu" or
+    wezterm.target_triple == "aarch64-unknown-linux-gnu"
+
+-- Create config
 local config = {}
 
--- In newer versions of wezterm, use the config_builder which will
--- help provide clearer error messages
 if wezterm.config_builder then
-	config = wezterm.config_builder()
+  config = wezterm.config_builder()
 end
 
--- config.disable_default_key_bindings = true
-config.wsl_domains = {
-	{
-		-- The name of this specific domain.  Must be unique amonst all types
-		-- of domain in the configuration file.
-		name = "WSL:Debian",
+-- Apply WSL settings only on Windows
+if is_windows then
+  config.wsl_domains = {
+    {
+      name = "WSL:Debian",
+      distribution = "Debian",
+      default_cwd = "~",
+    },
+  }
+  config.default_domain = "WSL:Debian"
+end
 
-		-- The name of the distribution.  This identifies the WSL distribution.
-		-- It must match a valid distribution from your `wsl -l -v` output in
-		-- order for the domain to be useful.
-		distribution = "Debian",
-		default_cwd = "~",
-	},
-}
 config.enable_kitty_keyboard = true
-config.default_domain = "WSL:Debian"
 config.font = wezterm.font("JetBrainsMono Nerd Font", { weight = "Bold" })
 config.font_size = 16
 config.enable_scroll_bar = false
-config.window_padding = { right = 2 }
+config.window_padding = { top = 30, right = 30, left = 50 }
 config.window_close_confirmation = "NeverPrompt"
 config.color_scheme = "Catppuccin Mocha"
 config.enable_tab_bar = false
 config.window_decorations = "RESIZE"
 config.leader = { key = "t", mods = "CTRL", timeout_milliseconds = 1000 }
+
 config.keys = {
-	{
-		key = "l",
-		mods = "CTRL|SHIFT",
-		action = wezterm.action.DisableDefaultAssignment,
-	},
-	-- {
-	-- 	key = "c",
-	-- 	mods = "CTRL|SHIFT",
-	-- 	action = wezterm.action({ CopyTo = "Clipboard" }),
-	-- },
-	-- {
-	-- 	key = "v",
-	-- 	mods = "CTRL|SHIFT",
-	-- 	action = wezterm.action({ PasteFrom = "Clipboard" }),
-	-- },
-	-- {
-	-- 	key = "Copy",
-	-- 	action = wezterm.action({ CopyTo = "Clipboard" }),
-	-- },
-	-- {
-	-- 	key = "Paste",
-	-- 	action = wezterm.action({ PasteFrom = "Clipboard" }),
-	-- },
+  {
+    key = "l",
+    mods = "CTRL|SHIFT",
+    action = wezterm.action.DisableDefaultAssignment,
+  },
 }
 
--- and finally, return the configuration to wezterm
+-- Return config
 return config
