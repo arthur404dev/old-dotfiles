@@ -6,9 +6,16 @@ return {
     build = "make",
 
     opts = {
-      provider = "copilot",
-      auto_suggestions_provider = "copilot",
-      copilot = { model = "claude-3.5-sonnet" },
+      provider = "ollama",
+      auto_suggestions_provider = "ollama",
+      vendors = {
+        ollama = {
+          __inherited_from = "openai",
+          api_key_name = "",
+          endpoint = "http://127.0.0.1:11434/v1",
+          model = "codegemma",
+        },
+      },
       behaviour = {
         auto_suggestions = false
       },
