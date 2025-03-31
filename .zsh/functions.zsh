@@ -473,3 +473,36 @@ ensure_package() {
   # Only install if the command doesn't exist
   install $FLAGS "$package_name" "$binary_name" "$package_manager"
 }
+
+cc() {
+  find "$1" -type f -exec sh -c '
+    for file; do
+      ext="${file##*.}"
+      echo "File: $file"
+      echo "\\\$ext"
+      cat "$file"
+      echo "\n\\\\n"
+    done
+  ' sh {} +
+}
+
+ca() {
+  # Define an array of text items
+  opts=(
+    "copy to clipboard"
+    "output"
+  )
+
+  # Capture the selected output of fzf in a variable
+  operation=$(printf "%s\n" "${opts[@]}" | fzf --style minimal \
+    --disabled \
+    --border \
+    --tmux=20%,20% \
+    --prompt '' \
+    --multi \
+    --bind 'j:down' \
+    --bind 'k:up')
+
+  # Optionally, print the selected value
+  echo "You selected: $selected"
+}

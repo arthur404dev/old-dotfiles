@@ -17,7 +17,7 @@ fix_wsl2_interop() {
 export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Microsoft/WindowsApps"
 export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/Microsoft VS Code/bin"
 export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/Microsoft VS Code Insiders/bin"
-# export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/cursor/resources/app/bin"
+export PATH="$PATH:/mnt/c/Users/$WINDOWS_USERNAME/AppData/Local/Programs/cursor/resources/app/bin"
 export PATH="$PATH:/mnt/c/Program Files/Docker/Docker/resources/bin"
 export PATH="$PATH:/mnt/c/ProgramData/DockerDesktop/version-bin"
 export PATH="$PATH:/mnt/c/WINDOWS"
