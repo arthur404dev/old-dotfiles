@@ -30,8 +30,8 @@ $IS_WSL && [[ -f "$HOME/.zsh/wsl2fix.zsh" ]] && source "$HOME/.zsh/wsl2fix.zsh"
 [[ -f "$HOME/.zsh/libs.zsh" ]] && source "$HOME/.zsh/libs.zsh"
 
 # Load Artificial Intelligence
-[[ -f "$HOME/.zsh/ollama.zsh" ]] && source "$HOME/.zsh/ollama.zsh"
-[[ -f "$HOME/.zsh/ai.zsh" ]] && source "$HOME/.zsh/ai.zsh"
+# [[ -f "$HOME/.zsh/ollama.zsh" ]] && source "$HOME/.zsh/ollama.zsh"
+# [[ -f "$HOME/.zsh/ai.zsh" ]] && source "$HOME/.zsh/ai.zsh"
 
 # Load All work private files
 if [ -d "$HOME/.zsh/work" ] && [ "$(ls -A "$HOME/.zsh/work")" ]; then

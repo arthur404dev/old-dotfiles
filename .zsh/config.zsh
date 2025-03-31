@@ -1,8 +1,10 @@
 # Vim Keybindings
-bindkey -e
+bindkey -v
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey '^[w' kill-region
+
+export KEYTIMEOUT=1
 
 # History
 HISTSIZE=1000
