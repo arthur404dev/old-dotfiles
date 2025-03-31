@@ -13,8 +13,17 @@
 */github-copilot
 */nextjs-nodejs
 */turborepo
+*/simple-update-notifier
+*/create-next-app-nodejs
 .local
 
 .aider*
 .env
 .DS_Store
+
+# Fish Related
+*/fish/completions/
+*/fish/fish_*
+*/fish/functions/_*
+*/fish/conf.d/[^0-9]*
+*/fish/functions/fzf_configure_bindings.fish
