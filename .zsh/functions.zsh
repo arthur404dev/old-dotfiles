@@ -475,15 +475,13 @@ ensure_package() {
 }
 
 cc() {
-  find "$1" -type f -exec sh -c '
-    for file; do
-      ext="${file##*.}"
-      echo "File: $file"
-      echo "\\\$ext"
-      cat "$file"
-      echo "\n\\\\n"
-    done
-  ' sh {} +
+  find "$1" -type f -print0 | while IFS= read -r -d $'\0' file; do
+    ext="${file##*.}"
+    echo "- File: $file"
+    echo "\n\`\`\`${ext}"
+    cat "$file"
+    echo "\n\`\`\`\n"
+  done
 }
 
 ca() {
