@@ -1,4 +1,4 @@
-# 🌟 My Dotfiles
+# 🌟 My Dotfiles (DEPRECATED)
 
 Welcome to my dotfiles repository!
 This setup is built for a **zsh** shell environment, with carefully tuned configurations for **tmux** and **Neovim** to enhance productivity and developer happiness.
